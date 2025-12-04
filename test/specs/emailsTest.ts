@@ -7,7 +7,7 @@ const process = require("process");
 let userEmail = process.env.email;
 let userPassword = process.env.pass;
 let collectedEmails = {}
-let emailsAmount = 10
+let emailsAmount =  process.env.emailAmount;
 let themeText, bodyText, countLetters, countNumbers, joinedString, actualEmails;
 
 // const emailText = {
@@ -44,7 +44,7 @@ describe("Send emails via Ukr.net.", () => {
 
     it("Sends emails to the user", async () => {
         //Sends specific amount of emails
-        for(let i = 0; i < emailsAmount; i++) {
+        for(let i = 0; i < Number(emailsAmount); i++) {
             //Function for emails sending
             await inboxPage.sendEmails(true, userEmail, Math.random().toString(36).slice(2, 12), Math.random().toString(36).slice(2, 12));
 
@@ -69,10 +69,10 @@ describe("Send emails via Ukr.net.", () => {
 
         //Verifies that the amount of sent emais is the same as expected
         actualEmails = await inboxPage.countEmails();
-        await expect(Number(actualEmails)).toBe(emailsAmount);
+        await expect(Number(actualEmails)).toBe(Number(emailsAmount));
 
         //Creates object from theme and body of emails
-        for (let i = 0; i < emailsAmount; i++) {
+        for (let i = 0; i < Number(emailsAmount); i++) {
             themeText = await inboxPage.parseEmailsTheme(i + 1);
             bodyText = await inboxPage.parseEmailsBody(i + 1);
             collectedEmails[themeText] = bodyText;
@@ -104,7 +104,7 @@ describe("Send emails via Ukr.net.", () => {
 
         //Verifies that the amount of sent emais after received email section
         actualEmails = await inboxPage.countEmails();
-        await expect(Number(actualEmails)).toBe(emailsAmount + Object.keys(collectedEmails).length);
+        await expect(Number(actualEmails)).toBe(Number(emailsAmount) + Object.keys(collectedEmails).length);
     })
 
     it("Deletes all sent emails expect the last one", async () => {

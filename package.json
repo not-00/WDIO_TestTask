@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "npx cross-env email='vadymtestauto2@ukr.net' pass='Testpass1!' wdio run ./wdio.conf.ts",
+    "test": "npx cross-env email='vadymtestauto2@ukr.net' pass='Testpass1!' emailAmount=10 wdio run ./wdio.conf.ts",
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "devDependencies": {
