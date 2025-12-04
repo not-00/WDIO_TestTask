@@ -5,7 +5,11 @@ export default class Page {
     * Opens a sub page of the page
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
-    public open (path: string) {
-        return browser.url(`https://mail.google.com/mail/u/0/#${path}`)
+    public openInbox (path: string = "inbox") {
+        return browser.url(`https://mail.ukr.net/desktop/u0/msglist/${path}`)
+    }
+
+    public openMain() {
+        return browser.url("https://www.ukr.net/");
     }
 }

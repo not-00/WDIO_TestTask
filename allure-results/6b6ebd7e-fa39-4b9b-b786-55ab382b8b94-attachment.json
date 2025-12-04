@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "i//*[@id='app-root']/div/div/form/div[1]/label/input"
+}

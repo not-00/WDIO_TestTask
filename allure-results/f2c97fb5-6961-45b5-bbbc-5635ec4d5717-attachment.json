@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@id='app-root']/div/div/form/div[2]/label"
+}

@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "npx wdio run ./wdio.conf.js",
+    "test": "npx cross-env email='vadymtestauto2@ukr.net' pass='Testpass1!' wdio run ./wdio.conf.ts",
     "wdio": "wdio run ./wdio.conf.ts"
   },
   "devDependencies": {
@@ -20,6 +20,7 @@
     "@wdio/spec-reporter": "^9.20.0",
     "chai": "^6.2.1",
     "chai-webdriverio": "^1.0.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "expect-webdriverio": "^5.5.0",
     "globals": "^16.5.0",

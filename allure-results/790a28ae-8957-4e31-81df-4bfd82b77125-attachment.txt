@@ -1,0 +1,2 @@
+stale element reference: WebDriverError: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.176) when running "element/f.C5CBA9CF3E398C16C8D2860F58BE4FEC.d.B9A2B3BB5EFF87356A46F00DC7A16489.e.64/property/value" with method "GET"

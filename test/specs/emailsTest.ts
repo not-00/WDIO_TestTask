@@ -1,78 +1,82 @@
-import { expect } from "@wdio/globals";
-import gmailMainPage from "../pageobjects/gmailMainPage/gmailMainPage";
-import loginPage from "../pageobjects/gmailLoginPage/loginPage";
-import passwordPage from "../pageobjects/gmailLoginPage/passwordPage";
-import gmailPage from "../pageobjects/gmailPage/gmailPage";
+import { expect, browser } from "@wdio/globals";
+// import mainPage from "../pageobjects/mainPage/mainPage";
+import authPage from "../pageobjects/auth/authPage";
+import inboxPage from "../pageobjects/inbox/inboxPage";
+const process = require("process");
 
-const userOneEmail = "vadymtest4@gmail.com"
-// const userTwoEmail = "vadymtest55@gmail.com"
-const userOnePassword = "TestPass1!"
-// const userTwoPassword = "TestPass1!"    
-const receiverEmail = "kuzmych34@gmail.com"
+let userEmail = process.env.email;
+let userPassword = process.env.pass;
+let collectedEmails = {}
+let emailsAmount = 10
+let themeText, bodyText, countLetters, countNumbers, joinedString, actualEmails;
 
 // const emailText = {
-//         to: receiverEmail,
+//         to: userEmail,
 //         theme: Math.random().toString(36).slice(2, 12),
 //         body: Math.random().toString(36).slice(2, 12)
 // }
-    
-let collectedEmails = {}
-let emailsAmount = 10
-let theme, body, countLetters, countNumbers, joinedString;
 
-describe("Send emails via Gmail.", () => {
-    it("Gmail main page displayed correctly.", async () => {
+describe("Send emails via Ukr.net.", () => {
+    it("Ukr.net page displayed correctly and navigates to the Login page.", async () => {
+        /*
+        REMOVED FOR STABLE RUN
         //Opens main gmail page
-        await gmailMainPage.open();
+        await mainPage.openMain();
 
         //Gmail main screen elements verification function
-        await gmailMainPage.verifyScreen();
+        await mainPage.verifyScreen();
+        */
+
+        //Navigete to the login page
+        await authPage.openLogin();
     })
 
-    it("Naviagtes to the Login page, and logins to the gmail user", async () => {
-        //Navigates to the Login page
-        await gmailMainPage.clickSignIn();
-
+    it("Logins to the correct user", async () => {
         //Login screen elements verification function
-        await loginPage.verifyScreen();
+        await authPage.verifyScreen();
 
-        //Enters user email and continues
-        await loginPage.enterEmailAndClickNext(userOneEmail);
-
-        //Password screen emelents verification function
-        await passwordPage.verifyScreen({email: userOneEmail});
-
-        //Enters user password and continues
-        await passwordPage.enterPasswordAndClickNext(userOnePassword);
+        //Login with valid credentials
+        await authPage.loginToAccount(userEmail, userPassword);
 
         //Inbox screen elements verification function
-        await gmailPage.verifyScreen({email: userOneEmail});
+        await inboxPage.verifyScreen({email: userEmail});
     })
 
     it("Sends emails to the user", async () => {
         //Sends specific amount of emails
         for(let i = 0; i < emailsAmount; i++) {
             //Function for emails sending
-            // await gmailPage.sendEmails(emailText.to, emailText.theme, emailText.body);
+            await inboxPage.sendEmails(true, userEmail, Math.random().toString(36).slice(2, 12), Math.random().toString(36).slice(2, 12));
 
-            //Sends emails and saves email data to the object {theme}: {body}
-            await gmailPage.clickSend();
-            await gmailPage.enterReceiver(receiverEmail);
-            await gmailPage.enterTheme(Math.random().toString(36).slice(2, 12));
-            theme = await gmailPage.inpTheme.getValue();
-            await gmailPage.enterBody(Math.random().toString(36).slice(2, 12));
-            body = await gmailPage.inpBody.getValue();
-            collectedEmails[theme] = body;
-            await gmailPage.clickSendEmail();
+            // //Sends emails and saves email data to the object {theme}: {body}
+            // await inboxPage.clickSend();
+            // await inboxPage.enterReceiver(userEmail);
+            // await inboxPage.enterTheme(Math.random().toString(36).slice(2, 12));
+            // theme = await inboxPage.inpTheme.getValue();
+            // await inboxPage.enterBody(Math.random().toString(36).slice(2, 12));
+            // body = await inboxPage.inpBody.getValue();
+            // collectedEmails[theme] = body;
+            // await inboxPage.clickSendEmail();
             
             //Sent alert displaying verirication
-            await expect(gmailPage.alertSent).toBeDisplayed();
+            // await expect(inboxPage.alertSent).toBeDisplayed();
         }
     })
 
     it("Checks amount of total sent emails and send summary report", async () => {
+        //Naviagte to the inbox
+        inboxPage.openInbox();
+
         //Verifies that the amount of sent emais is the same as expected
-        expect(emailsAmount).toBe(Object.keys(collectedEmails).length);
+        actualEmails = await inboxPage.countEmails();
+        await expect(Number(actualEmails)).toBe(emailsAmount);
+
+        //Creates object from theme and body of emails
+        for (let i = 0; i < emailsAmount; i++) {
+            themeText = await inboxPage.parseEmailsTheme(i + 1);
+            bodyText = await inboxPage.parseEmailsBody(i + 1);
+            collectedEmails[themeText] = bodyText;
+        }
 
         //Summarize and send summary report emails
         for(const key in collectedEmails) {
@@ -86,13 +90,34 @@ describe("Send emails via Gmail.", () => {
             countNumbers = joinedString.replace(/[^0-9]/g, '').length
 
             //Sends summary emails
-            await gmailPage.clickSend();
-            await gmailPage.enterReceiver(receiverEmail);
-            await gmailPage.enterTheme(`Received mail on theme ${key} with message: ${collectedEmails[key]}. It contains ${countLetters} letters and ${countNumbers} numbers`);
-            await gmailPage.clickSendEmail();
-
-            //Sent alert displaying verirication
-            await expect(gmailPage.alertSent).toBeDisplayed();
+            await inboxPage.clickSend();
+            await inboxPage.enterReceiver(userEmail);
+            await inboxPage.enterTheme(`Received mail on theme ${key} with message: ${collectedEmails[key]}. It contains ${countLetters} letters and ${countNumbers} numbers`);
+            await inboxPage.clickSendEmail();
+            await browser.pause(10000);
+            await inboxPage.clickSendWithoutBody();
+            await inboxPage.clickSendMore();
         }
+        //Naviagte to the inbox
+        await inboxPage.openInbox();
+        await browser.pause(5000);
+
+        //Verifies that the amount of sent emais after received email section
+        actualEmails = await inboxPage.countEmails();
+        await expect(Number(actualEmails)).toBe(emailsAmount + Object.keys(collectedEmails).length);
+    })
+
+    it("Deletes all sent emails expect the last one", async () => {
+        //Selects emails in the inbox that will be deleted and delets them
+        actualEmails = await inboxPage.countEmails();
+        for(let i = Number(actualEmails); i > 1; i--) {
+            await inboxPage.deleteSelectedEmails(i);
+        }
+        await inboxPage.clickInboxDelete();
+        await browser.pause(5000);
+        
+        //Verified that the only one email left
+        actualEmails = await inboxPage.countEmails();
+        await expect(Number(actualEmails)).toBe(1);
     })
 })

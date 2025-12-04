@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id='app-root']/div/div[4]/div[1]/div[2]/nav/div[1]/a/span[2]\"}\n  (Session info: chrome=142.0.7444.176)",
+  "stacktrace": "Symbols not available. Dumping unresolved backtrace:\n\t0x7ff79fafa235\n\t0x7ff79f852650\n\t0x7ff79f5e16dd\n\t0x7ff79f63a27e\n\t0x7ff79f63a58c\n\t0x7ff79f68ed77\n\t0x7ff79f68baba\n\t0x7ff79f62b0ed\n\t0x7ff79f62bf63\n\t0x7ff79fb25d60\n\t0x7ff79fb1fe8a\n\t0x7ff79fb41005\n\t0x7ff79f86d73e\n\t0x7ff79f874e3f\n\t0x7ff79f85b7e4\n\t0x7ff79f85b99f\n\t0x7ff79f841908\n\t0x7ffd1de67374\n\t0x7ffd1ec1cc91\n"
+}

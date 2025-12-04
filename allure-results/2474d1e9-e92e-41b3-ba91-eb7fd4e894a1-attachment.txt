@@ -1,0 +1,2 @@
+element click intercepted: WebDriverError: element click intercepted: Element <button class="c5RN4yNv jdJNSsPt Oq5thHyi _1kf2qcyv" type="button">...</button> is not clickable at point (126, 184). Other element would receive the click: <div class="LHEhin38"></div>
+  (Session info: chrome=142.0.7444.176) when running "element/f.F44B905C7C7B7243C76B1B1CA160EBD0.d.FA723D524D9A7474861EF7AA03995099.e.953/click" with method "POST"

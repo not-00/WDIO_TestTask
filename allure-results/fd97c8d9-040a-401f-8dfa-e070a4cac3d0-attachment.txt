@@ -1,0 +1,2 @@
+stale element reference: WebDriverError: stale element reference: stale element not found
+  (Session info: chrome=142.0.7444.176) when running "element/f.FEFD4CE67E66B221D9BA9766350DF5DF.d.AA9AF1F744F51CC7827459C0A6FD646E.e.62/elements" with method "POST"

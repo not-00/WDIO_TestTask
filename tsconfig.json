@@ -26,6 +26,7 @@
     },
     "include": [
         "test",
-        "wdio.conf.ts"
-, "Trash/login.page.ts", "test/pageobjects/basePage.ts", "Trash/secure.page.ts", "Trash/test.e2e.ts"    ]
+        "wdio.conf.ts", 
+        "test/pageobjects/basePage.ts"
+    ]
 }

@@ -1,0 +1,2 @@
+invalid element state: WebDriverError: invalid element state
+  (Session info: chrome=142.0.7444.176) when running "element/f.90A1C81362721155A8EA7C9CA9A80034.d.CA8837E9EA85D3475C5E563A59AFC7B3.e.89/clear" with method "POST"
