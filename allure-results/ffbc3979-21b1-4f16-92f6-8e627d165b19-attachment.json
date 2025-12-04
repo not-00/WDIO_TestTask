@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "Unable to locate element: .//*[contains(concat(\" \",@class,\" \"), \" button \") and normalize-space(text()) = \"'Sign in'\"] | .//*[contains(concat(\" \",@class,\" \"), \" button \") and not(.//*[contains(concat(\" \",@class,\" \"), \" button \") and normalize-space(text()) = \"'Sign in'\"]) and normalize-space() = \"'Sign in'\"]",
+  "stacktrace": "RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8\nWebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:202:5\nNoSuchElementError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:555:5\ndom.find/</<@chrome://remote/content/shared/DOM.sys.mjs:136:16\n"
+}

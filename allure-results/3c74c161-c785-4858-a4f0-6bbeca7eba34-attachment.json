@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//div[normalize-space(text()) = \"'/(Not your.*)\\w/g'\"] | .//div[not(.//div[normalize-space(text()) = \"'/(Not your.*)\\w/g'\"]) and normalize-space() = \"'/(Not your.*)\\w/g'\"]\"}\n  (Session info: chrome=142.0.7444.176)",
+  "stacktrace": "Symbols not available. Dumping unresolved backtrace:\n\t0x7ff7a0e0a235\n\t0x7ff7a0b62650\n\t0x7ff7a08f16dd\n\t0x7ff7a094a27e\n\t0x7ff7a094a58c\n\t0x7ff7a099ed77\n\t0x7ff7a099baba\n\t0x7ff7a093b0ed\n\t0x7ff7a093bf63\n\t0x7ff7a0e35d60\n\t0x7ff7a0e2fe8a\n\t0x7ff7a0e51005\n\t0x7ff7a0b7d73e\n\t0x7ff7a0b84e3f\n\t0x7ff7a0b6b7e4\n\t0x7ff7a0b6b99f\n\t0x7ff7a0b51908\n\t0x7ff988577374\n\t0x7ff98929cc91\n"
+}

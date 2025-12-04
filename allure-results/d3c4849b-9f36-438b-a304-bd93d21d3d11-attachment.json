@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//div[normalize-space(text()) = \"'/(Not your.*)\\w/g'\"] | .//div[not(.//div[normalize-space(text()) = \"'/(Not your.*)\\w/g'\"]) and normalize-space() = \"'/(Not your.*)\\w/g'\"]"
+}

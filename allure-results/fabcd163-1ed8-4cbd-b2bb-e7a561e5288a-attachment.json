@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\".//a[normalize-space(text()) = \"'/(Sign in.*)\\w/g'\"] | .//a[not(.//a[normalize-space(text()) = \"'/(Sign in.*)\\w/g'\"]) and normalize-space() = \"'/(Sign in.*)\\w/g'\"]\"}\n  (Session info: MicrosoftEdge=142.0.3595.94)",
+  "stacktrace": "Symbols not available. Dumping unresolved backtrace:\n\t0x7ff7fb8ea715\n\t0x7ff7fb8ea774\n\t0x7ff7fba9c558\n\t0x7ff7fb6a40ce\n\t0x7ff7fb6a431b\n\t0x7ff7fb6e0777\n\t0x7ff7fb69b3d5\n\t0x7ff7fb6de6f2\n\t0x7ff7fb69a8aa\n\t0x7ff7fb699bd1\n\t0x7ff7fb69a6d3\n\t0x7ff7fb7581f4\n\t0x7ff7fb754717\n\t0x7ff7fb917375\n\t0x7ff7fb9057d1\n\t0x7ff7fb90dc79\n\t0x7ff7fb8f1c64\n\t0x7ff7fb8f1db3\n\t0x7ff7fb8dfae6\n\t0x7ff988577374\n\t0x7ff98929cc91\n"
+}

@@ -1,0 +1,2 @@
+element not interactable: WebDriverError: element not interactable
+  (Session info: MicrosoftEdge=142.0.3595.94) when running "element/f.5B5B173FB1432100083C0C84EAB6E1E1.d.BBC942F74D2518B3DE7C5DF7AA82915C.e.118/click" with method "POST"

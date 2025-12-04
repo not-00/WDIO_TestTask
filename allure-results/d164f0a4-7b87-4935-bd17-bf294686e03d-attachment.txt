@@ -1,0 +1,1 @@
+invalid selector: WebDriverError: Given xpath expression "/(Sign in.*)\w/g" is invalid: SyntaxError: Document.evaluate: The expression is not a legal expression when running "element" with method "POST"

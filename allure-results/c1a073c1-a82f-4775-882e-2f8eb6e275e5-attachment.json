@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": ".//span[contains(concat(\" \",@class,\" \"), \" button__label \") and normalize-space(text()) = \"Sign in\"] | .//span[contains(concat(\" \",@class,\" \"), \" button__label \") and not(.//span[contains(concat(\" \",@class,\" \"), \" button__label \") and normalize-space(text()) = \"Sign in\"]) and normalize-space() = \"Sign in\"]"
+}

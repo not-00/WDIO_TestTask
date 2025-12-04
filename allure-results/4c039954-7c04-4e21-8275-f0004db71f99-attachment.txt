@@ -1,0 +1,1 @@
+element not interactable: WebDriverError: Element <div class="label-tracker"> could not be scrolled into view when running "element/abefa815-dc94-4224-8b11-0e067a1fc8b9/click" with method "POST"
